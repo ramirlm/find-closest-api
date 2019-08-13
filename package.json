@@ -1,0 +1,22 @@
+{
+  "name": "node-locations",
+  "version": "1.0.0",
+  "description": "NodeJS Location Inquiry",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramirlm/node-locations.git"
+  },
+  "author": "Ramir Mesquita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramirlm/node-locations/issues"
+  },
+  "homepage": "https://github.com/ramirlm/node-locations#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
