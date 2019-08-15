@@ -20,16 +20,22 @@ app.get('/', function(req, res) {
 app.post('/locations', function(req, res) {
     var locations = req.body.locations;
     
-    let response = new Array();
+    let response = [];
     let responseObj = undefined;
+
+    let closest = undefined;
+    let distance = undefined;
+    let smallestDistance = undefined;
+    let locB = undefined;
 
     Array.from(locations, loc => {
 
-        let closest = undefined;
-        let distance = undefined;
-        let smallestDistance = undefined;
+        closest = undefined;
+        distance = undefined;
+        smallestDistance = undefined;
         
-        locations.forEach(function (locB) {
+        for(let i = 0; i < locations.length; i++) {
+            locB = locations[i];
 
             if (locB.name != loc.name) {
 
@@ -48,9 +54,9 @@ app.post('/locations', function(req, res) {
                     closest = locB;
                 }
             }
-        });
+        }
         
-        responseObj = {a: loc.name, b: closest.name, distance};
+        responseObj = {a: loc.name, b: closest.name, smallestDistance};
         
         response.push(responseObj);
 
