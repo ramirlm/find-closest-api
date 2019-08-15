@@ -21,32 +21,34 @@ app.post('/locations', function(req, res) {
     var locations = req.body.locations;
     
     let response = new Array();
+    let responseObj = undefined;
+    
     Array.from(locations, loc => {
+
+        let closest = undefined;
         let distance = 0;
+        let smallestDistance = undefined;
         
-        response.push(loc.name);
-
         locations.forEach(function (locB) {
-            if (response.lenght() > 1) {
-                 
-            } else {
 
+            if (locB.name != loc.name) {
                 distance = Math.sqrt(Math.pow(loc.x - locB.x, 2) + Math.pow(loc.y - locB.y, 2)); 
+    
+                if (!smallestDistance || smallestDistance < distance) {
+                    closest = locB;
+                }
             }
-            console.log('Distance ', distance);
         });
-        // locations.forEach(function (locB) {
-        //     if (loc != locB) {
-        //         response[i] = Object.assign(loc);
-        //     } 
-        // });
+        
+        responseObj = {a: loc, b: closest};
+        response.push(responseObj);
+        closest = undefined;
+        responseObj = undefined;
+        distance = 0;
+        biggestDistance = 0;
+    
     });
-    for(var i = 0; i < locations.lenght; i++) {
-        console.log('HI!');
-        console.log(locations[i].x);
-        console.log(locations[i].y);
-        console.log(locations[i].name);
-    };
-    res.send(locations);
+
+    res.send(response);
 });
 
