@@ -10,7 +10,7 @@ FindClosest requires [Node.js](https://nodejs.org/) v4+ to run.
 Install the dependencies and devDependencies and start the server:
 
 ```sh
-$ git clone find-closest.git
+$ git clone https://github.com/ramirlm/find-closest-api.git
 $ cd find-closest
 $ npm install -d
 $ npm start
@@ -53,6 +53,8 @@ It will return a list of all valid locations with it's closest location in the l
   }
 ]
 ```
+
+You might use a generated JSON included on folder assets/test-data.json with a set of 100 randomly generated locations.
 
 ### Considerations
 
