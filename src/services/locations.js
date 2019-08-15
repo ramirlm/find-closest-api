@@ -1,5 +1,3 @@
-const express = require('express');
-
 let response = [];
 let responseObj = undefined;
 
