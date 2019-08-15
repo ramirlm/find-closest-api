@@ -4,7 +4,7 @@
   "description": "NodeJS Location Inquiry",
   "main": "lib/index.js",
   "scripts": {
-    "build": "webpack --config ./webpack.config.js --mode=production",
+    "build": "babel src --out-dir lib",
     "prepare": "npm run build",
     "test": "echo \"No test specified\" && exit 0",
     "start": "nodemon --exec babel-node src/server"
