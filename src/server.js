@@ -26,7 +26,7 @@ app.post('/locations', function(req, res) {
     Array.from(locations, loc => {
 
         let closest = undefined;
-        let distance = 0;
+        let distance = undefined;
         let smallestDistance = undefined;
         
         locations.forEach(function (locB) {
@@ -51,10 +51,10 @@ app.post('/locations', function(req, res) {
         });
         
         responseObj = {a: loc.name, b: closest.name, distance};
+        
         response.push(responseObj);
-        closest = undefined;
+
         responseObj = undefined;
-        distance = undefined;
     
     });
 
