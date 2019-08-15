@@ -12,11 +12,6 @@ app.listen(port);
 
 console.log('HTTP Server listening to port %s', port);
 
-app.get('/', function(req, res) {
-
-    res.send({message:'First Location'});
-});
-
 app.post('/locations', function(req, res) {
     var locations = req.body.locations;
     
@@ -33,30 +28,33 @@ app.post('/locations', function(req, res) {
         closest = undefined;
         distance = undefined;
         smallestDistance = undefined;
+
+        if (loc.x && loc.y && loc.name) {
         
-        for(let i = 0; i < locations.length; i++) {
-            locB = locations[i];
+            for (let i = 0; i < locations.length; i++) {
+                locB = locations[i];
 
-            if (locB.name != loc.name) {
+                if (locB.name != loc.name) {
 
-                if (locB.y == loc.y && locB.x == loc.x) {
-                    distance = 0;
-                } else {
-                    distance = Math.sqrt(Math.pow(loc.x - locB.x, 2) + Math.pow(loc.y - locB.y, 2)); 
-                }
-    
-                if (smallestDistance === undefined || smallestDistance > distance) {
-                    smallestDistance = distance;
-                    closest = locB;
+                    if (locB.y == loc.y && locB.x == loc.x) {
+                        distance = 0;
+                    } else {
+                        distance = Math.sqrt(Math.pow(loc.x - locB.x, 2) + Math.pow(loc.y - locB.y, 2)); 
+                    }
+        
+                    if (smallestDistance === undefined || smallestDistance > distance) {
+                        smallestDistance = distance;
+                        closest = locB;
+                    }
                 }
             }
-        }
-        
-        responseObj = {a: loc.name, b: closest.name, distance: smallestDistance};
-        
-        response.push(responseObj);
+            
+            responseObj = {a: loc.name, b: closest.name, distance: smallestDistance};
+            
+            response.push(responseObj);
 
-        responseObj = undefined;
+            responseObj = undefined;
+        }
     
     });
 
