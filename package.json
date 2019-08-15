@@ -1,33 +1,38 @@
 {
-  "name": "node-locations",
+  "name": "find-closest-api",
   "version": "1.0.0",
   "description": "NodeJS Location Inquiry",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config ./webpack.config.js --mode=production",
+    "prepare": "npm run build",
+    "test": "echo \"No test specified\" && exit 0",
     "start": "nodemon --exec babel-node src/server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ramirlm/node-locations.git"
+    "url": "git+https://github.com/ramirlm/find-closest-api.git"
   },
   "author": "Ramir Mesquita",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ramirlm/node-locations/issues"
+    "url": "https://github.com/ramirlm/find-closest-api/issues"
   },
-  "homepage": "https://github.com/ramirlm/node-locations#readme",
+  "homepage": "https://github.com/ramirlm/find-closest-api#readme",
   "dependencies": {
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "lodash": "^4.17.15",
     "mongodb": "^3.3.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.6",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.6"
