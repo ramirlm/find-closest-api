@@ -22,7 +22,7 @@ app.post('/locations', function(req, res) {
     
     let response = new Array();
     let responseObj = undefined;
-    
+
     Array.from(locations, loc => {
 
         let closest = undefined;
@@ -32,15 +32,25 @@ app.post('/locations', function(req, res) {
         locations.forEach(function (locB) {
 
             if (locB.name != loc.name) {
-                distance = Math.sqrt(Math.pow(loc.x - locB.x, 2) + Math.pow(loc.y - locB.y, 2)); 
+
+                if(locB.x == loc.x && locB.y != loc.y) {
+                    distance = loc.y - locB.y; 
+                } else if(locB.y == loc.y && locB.x != loc.x) {
+                    distance = loc.x - locB.x; 
+                } else if(locB.y == loc.y && locB.x == loc.x){
+                    distance = 0;
+                } else {
+                    distance = Math.sqrt(Math.pow(loc.x - locB.x, 2) + Math.pow(loc.y - locB.y, 2)); 
+                }
     
-                if (!smallestDistance || smallestDistance < distance) {
+                if (smallestDistance === undefined || smallestDistance > distance) {
+                    smallestDistance = distance;
                     closest = locB;
                 }
             }
         });
         
-        responseObj = {a: loc, b: closest};
+        responseObj = {a: loc.name, b: closest.name, distance};
         response.push(responseObj);
         closest = undefined;
         responseObj = undefined;
