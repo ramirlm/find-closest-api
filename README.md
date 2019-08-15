@@ -64,7 +64,7 @@ This application is deployed on Heroku.
 
 To test it, just send requests to:
 
-https://findclosest-api.herokuapp.com/api/locations
+https://findclosest-api.herokuapp.com:8080/api/locations
 
 ### Considerations
 
