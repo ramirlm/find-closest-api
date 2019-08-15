@@ -54,8 +54,7 @@ app.post('/locations', function(req, res) {
         response.push(responseObj);
         closest = undefined;
         responseObj = undefined;
-        distance = 0;
-        biggestDistance = 0;
+        distance = undefined;
     
     });
 
