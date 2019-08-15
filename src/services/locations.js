@@ -1,8 +1,60 @@
+const express = require('express');
 
-const isValidLocation = (location) => {
+let response = [];
+let responseObj = undefined;
+
+let closestLocation = undefined;
+let distance = undefined;
+let smallestDistance = undefined;
+let locationToCompare = undefined;
+
+const findClosest = (req, res, next) => {
+    var locations = req.body.locations;
+
+    Array.from(locations, currentLocation => {
+        if (_isValidLocation(currentLocation)) {
+            _compareWithAll(currentLocation, locations);
+        }
+    
+    });
+
+    res.status(200).send(response);
+};
+
+const _isValidLocation = (location) => {
     return location.x && location.y && location.name;
 }
 
-export default {
-    isValidLocation
+const _compareWithAll = (currentLocation, locations) => {
+    closestLocation = undefined;
+    distance = undefined;
+    smallestDistance = undefined;
+   
+    for (let i = 0; i < locations.length; i++) {
+        locationToCompare = locations[i];
+        if (_isValidLocation(locationToCompare) && locationToCompare.name != currentLocation.name) {
+            _computeDistance(currentLocation);
+        }
+    }
+    responseObj = { a: currentLocation.name, b: closestLocation.name, distance: smallestDistance };
+    response.push(responseObj);
+    responseObj = undefined;
 }
+
+function _computeDistance(currentLocation) {
+    if (locationToCompare.y == currentLocation.y && locationToCompare.x == currentLocation.x) {
+        distance = 0;
+    }
+    else {
+        distance = Math.sqrt(Math.pow(currentLocation.x - locationToCompare.x, 2) + Math.pow(currentLocation.y - locationToCompare.y, 2));
+    }
+    if (smallestDistance === undefined || smallestDistance > distance) {
+        smallestDistance = distance;
+        closestLocation = locationToCompare;
+    }
+}
+
+export default {
+    findClosest
+}
+

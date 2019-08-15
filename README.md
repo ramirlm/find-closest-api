@@ -72,6 +72,10 @@ https://findclosest-api.herokuapp.com:8080/api/locations
 - Speed of the endpoint for a mass of data of 100 locations is ~80ms
 - In case of drawn locations, the first in the list will be set as the closest
 
+### Todos
+- Algorithm optimizing to improve performance
+- Better error threatment
+
 
 API used to generate data:
 http://www.generatedata.com/#generator
