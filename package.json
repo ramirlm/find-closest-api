@@ -2,9 +2,11 @@
   "name": "find-closest-api",
   "version": "1.0.0",
   "description": "NodeJS Location Inquiry",
-  "main": "src/app.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "mocha --require @babel/register 'src/**/**spec.js'",
+    "build": "webpack --config ./webpack.config.js --mode=production",
+    "prepare": "npm run build",
+    "test": "echo \"No test specified\" && exit 0",
     "start": "nodemon --exec babel-node src/server"
   },
   "repository": {
