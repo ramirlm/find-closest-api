@@ -1,5 +1,6 @@
-node_modules
+node_modules/
 .idea
 coverage
+package-lock.json
 .vscode
 .DS_Store

@@ -1,10 +1,10 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-
+import express from 'express';
+import { urlencoded, json } from 'body-parser';
+import service from './services/locations';
 var app = express();
 
-app.use(bodyParser.urlencoded( {extended:true }));
-app.use(bodyParser.json());
+app.use(urlencoded( {extended:true }));
+app.use(json());
 
 var port = 8080;
 
@@ -29,12 +29,12 @@ app.post('/locations', function(req, res) {
         distance = undefined;
         smallestDistance = undefined;
 
-        if (loc.x && loc.y && loc.name) {
+        if (service.isValidLocation(loc)) {
         
             for (let i = 0; i < locations.length; i++) {
                 locB = locations[i];
-
-                if (locB.name != loc.name) {
+                
+                if (service.isValidLocation(locB) && locB.name != loc.name) {
 
                     if (locB.y == loc.y && locB.x == loc.x) {
                         distance = 0;
@@ -60,4 +60,3 @@ app.post('/locations', function(req, res) {
 
     res.send(response);
 });
-
