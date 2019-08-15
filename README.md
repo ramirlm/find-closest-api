@@ -22,7 +22,7 @@ $ npm test
 ```
 ### API
 
-The application will provide an Endpoint (/api/locations) that receives a list of locations on the body, based on the following JSON payload example:
+The application will provide an Endpoint (POST: /api/locations) that receives a list of locations on the body, based on the following JSON payload example:
 ```json
 {
 	"locations" : [
@@ -58,6 +58,13 @@ It will return a list of all valid locations with it's closest location in the l
 
 You might use a generated JSON included on folder assets/test-data.json with a set of 100 randomly generated locations.
 
+### Deployment
+
+This application is deployed on Heroku.
+
+To test it, just send requests to:
+
+https://findclosest-api.herokuapp.com/api/locations
 
 ### Considerations
 
