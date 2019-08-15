@@ -43,7 +43,7 @@ app.post('/locations', function(req, res) {
                     distance = loc.y - locB.y; 
                 } else if(locB.y == loc.y && locB.x != loc.x) {
                     distance = loc.x - locB.x; 
-                } else if(locB.y == loc.y && locB.x == loc.x){
+                } else if(locB.y == loc.y && locB.x == loc.x) {
                     distance = 0;
                 } else {
                     distance = Math.sqrt(Math.pow(loc.x - locB.x, 2) + Math.pow(loc.y - locB.y, 2)); 
