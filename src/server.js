@@ -56,7 +56,7 @@ app.post('/locations', function(req, res) {
             }
         }
         
-        responseObj = {a: loc.name, b: closest.name, smallestDistance};
+        responseObj = {a: loc.name, b: closest.name, distance: smallestDistance};
         
         response.push(responseObj);
 
