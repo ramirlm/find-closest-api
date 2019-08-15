@@ -17,7 +17,9 @@ $ npm start
 ```
 
 To run tests:
-
+```
+$ npm test
+```
 ### API
 
 The application will provide an Endpoint (/api/locations) that receives a list of locations on the body, based on the following JSON payload example:
@@ -55,6 +57,7 @@ It will return a list of all valid locations with it's closest location in the l
 ```
 
 You might use a generated JSON included on folder assets/test-data.json with a set of 100 randomly generated locations.
+
 
 ### Considerations
 
