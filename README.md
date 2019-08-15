@@ -16,10 +16,6 @@ $ npm install -d
 $ npm start
 ```
 
-To run tests:
-```
-$ npm test
-```
 ### API
 
 The application will provide an Endpoint (POST: /api/locations) that receives a list of locations on the body, based on the following JSON payload example:

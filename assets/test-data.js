@@ -1,4 +1,4 @@
-{
+export const locations = {
 	"locations" : [
 		{
 			"name": "Cum Sociis Natoque Corporation",

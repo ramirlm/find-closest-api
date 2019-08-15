@@ -7,16 +7,23 @@ let smallestDistance = undefined;
 let locationToCompare = undefined;
 
 const findClosest = (req, res, next) => {
-    var locations = req.body.locations;
-
-    Array.from(locations, currentLocation => {
-        if (_isValidLocation(currentLocation)) {
-            _compareWithAll(currentLocation, locations);
-        }
+    try {
+        var locations = req.body.locations;
     
-    });
-
-    res.status(200).send(response);
+        Array.from(locations, currentLocation => {
+            if (_isValidLocation(currentLocation)) {
+                _compareWithAll(currentLocation, locations);
+            }
+        
+        });
+    
+        res.status(200).send(response);
+    } catch (error) {
+        return res.status(500).json({
+            'code': 'SERVER_ERROR',
+            'description': 'Something went wrong, Please try again'
+        });
+    }
 };
 
 const _isValidLocation = (location) => {
